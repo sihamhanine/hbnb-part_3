@@ -1,0 +1,15 @@
+Flask
+validate-email-address
+requests
+pycountry
+Flask-HTTPAuth
+flask_swagger_ui
+gunicorn
+Flask-Cors
+flask-jwt-extended
+flask-jwt-extended[asymmetric_crypto]
+Flask-SQLAlchemy
+python-dotenv
+flask-bcrypt
+Flask-Migrate
+psycopg2-binary

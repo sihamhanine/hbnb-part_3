@@ -1,0 +1,899 @@
+openapi: 3.0.1
+info:
+  title: Holberton School HBNB API
+  description: API documentation for the Holberton School HBNB project.
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000
+paths:
+  /places:
+    get:
+      summary: List all places
+      tags:
+        - Places
+      responses:
+        '200':
+          description: A list of places
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Place'
+              examples:
+                example-1:
+                  value:
+                    - id: "1"
+                      name: "Beach House"
+                      description: "A lovely beach house"
+                      address: "123 Beach House"
+                      city_id: "2"
+                      latitude: 36.778259
+                      longitude: -119.417931
+                      host_id: "3"
+                      num_rooms: 4
+                      num_bathrooms: 2
+                      price_per_night: 200
+                      max_guests: 8
+                      amenity_ids: ["5", "6"]
+    post:
+      summary: Create a new place
+      tags:
+        - Places
+      requestBody:
+        description: Place object that needs to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Place'
+            examples:
+              example-1:
+                value:
+                  name: "Mountain Cabin"
+                  address: "123 Beach House"
+                  city_id: "4"
+                  host_id: "3"
+                  description: "A cozy mountain cabin"
+                  num_rooms: 3
+                  num_bathrooms: 1
+                  max_guests: 5
+                  price_per_night: 150
+                  latitude: 34.052235
+                  longitude: -118.243683
+                  amenity_ids: ["7", "8"]
+      responses:
+        '201':
+          description: Place created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+  /places/{place_id}:
+    get:
+      summary: Get a place by ID
+      tags:
+        - Places
+      parameters:
+        - name: place_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A single place
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+              examples:
+                example-1:
+                  value:
+                    id: "1"
+                    name: "Beach House"
+                    address: "123 Beach House"
+                    city_id: "2"
+                    host_id: "3"
+                    description: "A lovely beach house"
+                    num_rooms: 4
+                    num_bathrooms: 2
+                    max_guests: 8
+                    price_per_night: 200
+                    latitude: 36.778259
+                    longitude: -119.417931
+                    amenity_ids: ["5", "6"]
+        '404':
+          description: Place not found
+    put:
+      summary: Update a place by ID
+      tags:
+        - Places
+      parameters:
+        - name: place_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Place object with updated data
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Place'
+            examples:
+              example-1:
+                value:
+                  name: "Updated Beach House"
+                  address: "123 Beach House"
+                  city_id: "2"
+                  host_id: "3"
+                  description: "An updated description"
+                  num_rooms: 5
+                  num_bathrooms: 3
+                  max_guests: 10
+                  price_per_night: 250
+                  latitude: 36.778259
+                  longitude: -119.417931
+                  amenity_ids: ["5", "6", "7"]
+      responses:
+        '200':
+          description: Place updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+        '404':
+          description: Place not found
+    delete:
+      summary: Delete a place by ID
+      tags:
+        - Places
+      parameters:
+        - name: place_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Place deleted
+        '404':
+          description: Place not found
+  /users:
+    get:
+      summary: List all users
+      tags:
+        - Users
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+              examples:
+                example-1:
+                  value:
+                    - id: "1"
+                      email: "user1@example.com"
+                      first_name: "John"
+                      last_name: "Doe"
+                    - id: "2"
+                      email: "user2@example.com"
+                      first_name: "Jane"
+                      last_name: "Doe"
+    post:
+      summary: Create a new user
+      tags:
+        - Users
+      requestBody:
+        description: User object that needs to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+            examples:
+              example-1:
+                value:
+                  email: "newuser@example.com"
+                  first_name: "New"
+                  last_name: "User"
+      responses:
+        '201':
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /users/{user_id}:
+    get:
+      summary: Get a user by ID
+      tags:
+        - Users
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A single user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                example-1:
+                  value:
+                    id: "1"
+                    email: "user1@example.com"
+                    first_name: "John"
+                    last_name: "Doe"
+        '404':
+          description: User not found
+    put:
+      summary: Update a user by ID
+      tags:
+        - Users
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: User object with updated data
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+            examples:
+              example-1:
+                value:
+                  email: "updateduser@example.com"
+                  first_name: "Updated"
+                  last_name: "User"
+      responses:
+        '200':
+          description: User updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+    delete:
+      summary: Delete a user by ID
+      tags:
+        - Users
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: User deleted
+        '404':
+          description: User not found
+  /amenities:
+    get:
+      summary: List all amenities
+      tags:
+        - Amenities
+      responses:
+        '200':
+          description: A list of amenities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Amenity'
+              examples:
+                example-1:
+                  value:
+                    - id: "1"
+                      name: "WiFi"
+                    - id: "2"
+                      name: "Pool"
+    post:
+      summary: Create a new amenity
+      tags:
+        - Amenities
+      requestBody:
+        description: Amenity object that needs to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Amenity'
+            examples:
+              example-1:
+                value:
+                  name: "Gym"
+      responses:
+        '201':
+          description: Amenity created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Amenity'
+  /amenities/{amenity_id}:
+    get:
+      summary: Get an amenity by ID
+      tags:
+        - Amenities
+      parameters:
+        - name: amenity_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A single amenity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Amenity'
+              examples:
+                example-1:
+                  value:
+                    id: "1"
+                    name: "WiFi"
+        '404':
+          description: Amenity not found
+         
+    put:
+      summary: Update an amenity by ID
+      tags:
+        - Amenities
+      parameters:
+        - name: amenity_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Amenity object with updated data
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Amenity'
+            examples:
+              example-1:
+                value:
+                  name: "Updated Gym"
+      responses:
+        '200':
+          description: Amenity updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Amenity'
+        '404':
+          description: Amenity not found
+    delete:
+      summary: Delete an amenity by ID
+      tags:
+        - Amenities
+      parameters:
+        - name: amenity_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Amenity deleted
+        '404':
+          description: Amenity not found
+  /reviews:
+    get:
+      summary: List all reviews
+      tags:
+        - Reviews
+      responses:
+        '200':
+          description: A list of reviews
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Review'
+              examples:
+                example-1:
+                  value:
+                    - id: "1"
+                      user_id: "2"
+                      place_id: "3"
+                      text: "Great place!"
+                    - id: "2"
+                      user_id: "3"
+                      place_id: "4"
+                      text: "Not bad"
+    post:
+      summary: Create a new review
+      tags:
+        - Reviews
+      requestBody:
+        description: Review object that needs to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+            examples:
+              example-1:
+                value:
+                  user_id: "2"
+                  place_id: "3"
+                  text: "Amazing stay!"
+      responses:
+        '201':
+          description: Review created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+  /reviews/{review_id}:
+    get:
+      summary: Get a review by ID
+      tags:
+        - Reviews
+      parameters:
+        - name: review_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A single review
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+              examples:
+                example-1:
+                  value:
+                    id: "1"
+                    user_id: "2"
+                    place_id: "3"
+                    text: "Great place!"
+        '404':
+          description: Review not found
+    put:
+      summary: Update a review by ID
+      tags:
+        - Reviews
+      parameters:
+        - name: review_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Review object with updated data
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+            examples:
+              example-1:
+                value:
+                  text: "Updated review text"
+      responses:
+        '200':
+          description: Review updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+        '404':
+          description: Review not found
+    delete:
+      summary: Delete a review by ID
+      tags:
+        - Reviews
+      parameters:
+        - name: review_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Review deleted
+        '404':
+          description: Review not found
+          paths:
+  /cities:
+    get:
+      summary: List all cities
+      tags:
+        - Cities
+      responses:
+        '200':
+          description: A list of cities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/City'
+              examples:
+                example-1:
+                  value:
+                    - id: "1"
+                      name: "San Francisco"
+                    - id: "2"
+                      name: "Los Angeles"
+    post:
+      summary: Create a new city
+      tags:
+        - Cities
+      requestBody:
+        description: City object that needs to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/City'
+            examples:
+              example-1:
+                value:
+                  id: "US"
+                  name: "New York"
+      responses:
+        '201':
+          description: City created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+        '400':
+          description: Invalid data
+        '404':
+          description: Country ID not found
+  /cities/{city_id}:
+    get:
+      summary: Get a city by ID
+      tags:
+        - Cities
+      parameters:
+        - name: city_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A single city
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+              examples:
+                example-1:
+                  value:
+                    country_id: "us"
+                    created_at: "2024-06-12T10:26:27.430015"
+                    name: "TOON"
+                    uniq_id: "35ea71fe-b74a-4e93-8334-742f59a30e79"
+                    updated_at: "2024-06-12T10:26:27.430023"
+        '404':
+          description: City not found
+    put:
+      summary: Update a city by ID
+      tags:
+        - Cities
+      parameters:
+        - name: city_id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: City object with updated data
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/City'
+            examples:
+              example-1:
+                value:
+                  name: "Updated City Name"
+      responses:
+        '200':
+          description: City updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+        '404':
+          description: City not found
+    delete:
+      summary: Delete a city by ID
+      tags:
+        - Cities
+      parameters:
+        - name: city_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: City deleted
+        '404':
+          description: City not found
+        components:
+          schemas:
+            City:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+  /countries:
+    get:
+      summary: List all countries
+      tags:
+        - Countries
+      responses:
+        '200':
+          description: A list of countries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Country'
+              examples:
+                example-1:
+                  value:
+                    - id: "US"
+                      name: "United States"
+                    - id: "CA"
+                      name: "Canada"
+  /countries/{country_code}:
+    get:
+      summary: Get a country by code
+      tags:
+        - Countries
+      parameters:
+        - name: country_code
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A single country
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
+              examples:
+                example-1:
+                  value:
+                    id: "US"
+                    name: "United States"
+        '404':
+          description: Country not found
+  /countries/{country_code}/cities:
+    get:
+      summary: List all cities in a country by country code
+      tags:
+        - Countries
+        - Cities
+      parameters:
+        - name: country_code
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of cities in the country
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/City'
+              examples:
+                example-1:
+                  value:
+                    - id: "1"
+                      name: "San Francisco"
+                    - id: "2"
+                      name: "Los Angeles"
+        '404':
+          description: Country or cities not found
+          paths:
+          /countries:
+            get:
+              summary: List all countries
+              tags:
+                - Countries
+              responses:
+                '200':
+                  description: A list of countries
+                  content:
+                    application/json:
+                      schema:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Country'
+                      examples:
+                        example-1:
+                          value:
+                            - id: "US"
+                              name: "United States"
+                            - id: "CA"
+                              name: "Canada"
+          /countries/{country_code}:
+            get:
+              summary: Get a country by code
+              tags:
+                - Countries
+              parameters:
+                - name: country_code
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+              responses:
+                '200':
+                  description: A single country
+                  content:
+                    application/json:
+                      schema:
+                        $ref: '#/components/schemas/Country'
+                      examples:
+                        example-1:
+                          value:
+                            id: "US"
+                            name: "United States"
+                '404':
+                  description: Country not found
+          /countries/{country_code}/cities:
+            get:
+              summary: List all cities in a country by country code
+              tags:
+                - Countries
+                - Cities
+              parameters:
+                - name: country_code
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+              responses:
+                '200':
+                  description: A list of cities in the country
+                  content:
+                    application/json:
+                      schema:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/City'
+                      examples:
+                        example-1:
+                          value:
+                            - id: "1"
+                              name: "San Francisco"
+                            - id: "2"
+                              name: "Los Angeles"
+                '404':
+                  description: Country or cities not found
+components:
+        
+
+  schemas:
+    Country:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The country code
+        name:
+          type: string
+          description: The name of the country
+    City:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the city
+        name:
+          type: string
+          description: The name of the city
+        
+  
+
+    Status:
+      type: object
+      properties:
+        status:
+          type: string
+          example: OK
+    Place:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        city_id:
+          type: string
+        host_id:
+          type: string
+        description:
+          type: string
+        num_rooms:
+          type: integer
+        num_bathrooms:
+          type: integer
+        max_guests:
+          type: integer
+        price_per_night:
+          type: integer
+          format: float
+        latitude:
+          type: integer
+          format: float
+        longitude:
+          type: integer
+          format: float
+        amenity_ids:
+          type: array
+          items:
+            type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+    Amenity:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    Review:
+      type: object
+      properties:
+        id:
+          type: string
+        user_id:
+          type: string
+        place_id:
+          type: string
+        text:
+          type: string
