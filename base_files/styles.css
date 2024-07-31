@@ -1,0 +1,320 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 60px 0 0 0;
+  background-color: #f5f5f5;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color:  #e69500;
+  color: white;
+}
+
+.logo {
+  height: 40px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.login-button {
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.login-button:hover {
+  background-color: orange;
+}
+
+main {
+flex: 1;
+width: 100%;
+padding: 20px;
+background-color: #f8f8f8; /* Couleur de fond du contenu principal */
+}
+
+h1 {
+  text-align: center;
+}
+/* style page index.html */
+
+#filter {
+  display: flex;
+  justify-content: center;
+align-items: center;
+  margin-bottom: 20px;
+font-weight: bold;
+}
+
+#country-filter{
+  width: 110px; /* Ajustez la largeur comme vous le souhaitez */
+height: 30px; /* Ajustez la hauteur comme vous le souhaitez */
+padding: 3px; /* Optionnel: ajoute du padding pour un meilleur rendu */
+border: 1px solid #ddd; /* Optionnel: ajoute une bordure */
+border-radius: 5px; /* Optionnel: arrondit les coins */
+font-size: 14px; /* Optionnel: ajuste la taille de la police */
+
+}
+
+#filter label {
+  margin-right: 10px;
+}
+
+#places-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.place-card {
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  margin: 15px;
+  padding: 10px;
+padding-bottom: 25px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+  width: 330px;
+  text-align: center;
+  
+}
+
+.place-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.place-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.details-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color:  #e69500;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.details-button:hover {
+  background-color: #e64a19;
+}
+
+/* style page place.html */
+
+.place-details {
+width: 100%;
+max-width: 1200px;
+background-color: white;
+padding: 20px;
+margin: 20px auto;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+text-align: center;
+}
+
+.place-image-large {
+width: 100%;
+height: auto;
+border-radius: 10px;
+margin-bottom: 20px;
+}
+
+.place-info p {
+margin: 10px 0;
+}
+
+#reviews {
+width: 100%;
+max-width: 1200px;
+margin: 20px auto;
+}
+
+.review-card {
+background-color: white;
+border: 1px solid #ddd;
+border-radius: 10px;
+padding: 20px;
+margin: 10px 0;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+
+}
+
+.add-review {
+width: 100%;
+max-width: 1200px;
+margin: 20px auto;
+
+}
+
+.add-review-form {
+width: 100%;
+max-width: 1200px;
+margin: 20px auto;
+background-color: red;
+
+
+
+}
+
+.add-review-form label,
+.add-review-form textarea,
+.add-review-form select,
+.add-review-form button {
+display: block;
+width: 100%;
+margin-bottom: 10px;
+}
+
+.add-review-form textarea {
+height: 100px;
+}
+
+.add-review-form button {
+padding: 10px;
+background-color: #FFA500;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.add-review-form button:hover {
+background-color: #e69500;
+}
+
+.add-review-button {
+display: inline-block;
+padding: 10px 20px;
+background-color: #FFA500;
+color: white;
+text-decoration: none;
+border-radius: 5px;
+margin-left: 350px;
+}
+
+.add-review-button:hover {
+background-color: #e69500;
+}
+
+/*style page add-review.html */
+
+form {
+background-color: white;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+width: 100%;
+max-width: 600px;
+margin: 20px auto;
+}
+
+form h2 {
+text-align: center;
+margin-bottom: 20px;
+}
+
+form label {
+display: block;
+margin-bottom: 10px;
+}
+
+form input[type="text"],
+form textarea {
+width: 100%;
+padding: 10px;
+border: 1px solid #ddd;
+border-radius: 5px;
+margin-bottom: 20px;
+box-sizing: border-box;
+}
+
+form button {
+display: block;
+width: 100%;
+padding: 10px;
+background-color: #FFA500;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
+transition: background-color 0.3s;
+}
+
+form button:hover {
+background-color: #e69500;
+}
+
+/* Style page login.html */
+#login-form {
+background-color: white;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+width: 100%;
+max-width: 400px;
+margin: 20px auto;
+text-align: center;
+}
+
+#login-form label {
+display: block;
+margin-bottom: 10px;
+text-align: left;
+}
+
+#login-form input[type="text"], 
+#login-form input[type="password"] {
+width: 100%;
+padding: 10px;
+border: 1px solid #ddd;
+border-radius: 5px;
+margin-bottom: 20px;
+box-sizing: border-box;
+}
+
+#login-form button {
+display: block;
+width: 100%;
+padding: 10px;
+background-color: #FFA500;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
+transition: background-color 0.3s;
+}
+
+#login-form button:hover {
+background-color: #e69500;
+}
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color:  #e69500;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-top: 20px; /* Pour s'assurer qu'il ne masque pas le contenu */
+  position: relative;
+}

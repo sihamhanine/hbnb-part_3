@@ -8,21 +8,50 @@
 </head>
 <body>
     <header>
+        <img src="logo.png" alt="Application Logo" class="logo">
         <nav>
-            <a href="login.html" id="login-link">Login</a>
+            <a href="login.html" id="login-link" class="login-button">Login</a>
         </nav>
     </header>
     <main>
+        <h1>Available Places</h1>
         <section id="filter">
-            <label for="country-filter">Filter by Country:</label>
+            <label for="country-filter">Filter by country:</label>
             <select id="country-filter">
-                <!-- Options will be populated dynamically -->
+                <option value="all">All</option>
+                <option value="us">United States</option>
+                <option value="ca">Canada</option>
+                <option value="fr">France</option>
             </select>
         </section>
         <section id="places-list">
-            <!-- List of places will be populated dynamically -->
+            <div class="place-card">
+                <img src="sample1.jpg" alt="Place Image" class="place-image">
+                <h2>Beautiful Beach House</h2>
+                <p>Price per night: $150</p>
+                <p>Location: Los Angeles, United States</p>
+                <a href="place.html" class="details-button">View Details</a>
+            </div>
+            <div class="place-card">
+                <img src="sample2.jpg" alt="Place Image" class="place-image">
+                <h2>Cozy Cabin</h2>
+                <p>Price per night: $100</p>
+                <p>Location: Toronto, Canada</p>
+                <a href="place.html" class="details-button">View Details</a>
+            </div>
+            <div class="place-card">
+                <img src="sample3.jpg" alt="Place Image" class="place-image">
+                <h2>Modern Apartment</h2>
+                <p>Price per night: $200</p>
+                <p>Location: New York, United States</p>
+                <a href="place.html" class="details-button">View Details</a>
+            </div>
+            <!-- Repeat similar blocks for other places -->
         </section>
     </main>
+    <footer>
+        <p>&copy; 2024 HBnB Evolution. All rights reserved.</p>
+    </footer>
     <script src="scripts.js"></script>
 </body>
 </html>
