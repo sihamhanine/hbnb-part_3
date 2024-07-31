@@ -79,7 +79,7 @@ font-size: 14px; /* Optionnel: ajuste la taille de la police */
 .place-card {
   border: 1px solid #ddd;
   border-radius: 20px;
-  margin: 15px;
+  margin: 20px;
   padding: 10px;
 padding-bottom: 25px;
   background-color: white;
@@ -150,8 +150,8 @@ margin: 20px auto;
 background-color: white;
 border: 1px solid #ddd;
 border-radius: 10px;
-padding: 20px;
-margin: 10px 0;
+padding: 10px;
+margin: 20px 0;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
 
@@ -168,8 +168,6 @@ margin: 20px auto;
 width: 100%;
 max-width: 1200px;
 margin: 20px auto;
-background-color: red;
-
 
 
 }
